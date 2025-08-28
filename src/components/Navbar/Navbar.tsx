@@ -19,8 +19,8 @@ const Navbar = () => {
     <div>
       <header className="bg-gray-600 text-white py-4">
         <nav className="flex justify-between container mx-auto items-center">
-          <Link to="" className="text-2xl font-bold">
-            <span className="text-red-500">Digital</span> Library
+          <Link to="" className="text-4xl font-bold">
+            <span className="text-orange-500">Modern Library</span> 
           </Link>
           <ul className="flex gap-4 items-center">
             {navmenu.map((menu) => (

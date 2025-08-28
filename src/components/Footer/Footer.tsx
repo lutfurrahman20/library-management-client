@@ -1,14 +1,14 @@
 const Footer = () => {
   return (
-    <footer className="bg-black">
+    <footer className="bg-slate-500">
       <div className="container mx-auto text-white px-10 py-12 sm:flex sm:items-start sm:justify-between">
         {/* Company Info */}
         <div className="mb-10 sm:mb-0 ">
           <p className="text-2xl font-semibold">
-            <span className="text-red-500">Digital</span> Library
+            <span className="text-gray-300">Modern Library</span>
           </p>
           <p className="text-sm leading-relaxed">
-            Providing reliable services since 2023
+            © 2025 Modern Library. All rights reserved.
           </p>
         </div>
 
