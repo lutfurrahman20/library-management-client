@@ -3,7 +3,7 @@ import Loader from "@/components/ui/Loader";
 import {
   useDeleteBookMutation,
   useGetAllBooksQuery,
-} from "@/redux/api/bookApi";
+} from "@/redux/Api/bookApi";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { FaCircleXmark } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
