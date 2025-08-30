@@ -1,69 +1,109 @@
-# React + TypeScript + Vite
+# Library Management System - Frontend 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a minimal Library Management System frontend built with React, TypeScript, Redux Toolkit Query, and Tailwind CSS, styled with elegant components from Shadcn UI. Core features—add, edit, delete, and borrow books—are implemented through responsive modals, ensuring a seamless and intuitive single-page experience.
 
-Currently, two official plugins are available:
+React Hook Form is used for robust and flexible form handling, while RTK Query powers efficient and scalable data fetching and state management. For real-time user feedback, Sonner provides lightweight, customizable toast notifications. The interface is fully responsive, cleanly designed, and easy to maintain.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### Frontend Live Link :  [Frontend-Live](https://library-management-client-liard-eta.vercel.app/)
+#### Backend Live Link :  [Backend-Live](https://library-management-phi-tan.vercel.app/)
+#### Backend Repository Link :  [Backend-Repository](https://github.com/lutfurrahman20/library_management)
 
-## Expanding the ESLint configuration
+## Library Management System - Features Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### All Books Page
+- Displays **all books** in card format.
+- Each book card includes action buttons:
+  - **Borrow Book** → Opens confirmation modal.
+  - **Update Book** → Opens editable modal with pre-filled values.
+  - **Delete Book** → Opens delete confirmation modal.
+  - **View Details** → Navigates to the book's detailed view.
+- Automatically reflects **available/unavailable status** based on `copies` count.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Add Book Page
+- Displays a modal form upon clicking **Add**.
+- Form validations:
+  - All fields are **required** except `description` and `available` checkbox.
+  - Must have **minimum 1 copy** to add.
+- On success:
+  - Shows **success toast**.
+  - Redirects to **All Books** page.
+- On failure:
+  - Shows **error toast**.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+### Delete Book Modal
+- Triggered by clicking the **Delete** button.
+- Displays a confirmation modal.
+- Upon confirmation:
+  - Deletes book from the database.
+  - Removes the book from the UI.
+  - Shows **success toast**.
+
+---
+
+## Update Book Modal
+- Opens a **modal with pre-filled values**.
+- **Update button** only enabled if any field changes.
+- On success:
+  - Updates the book in the database.
+  - Shows **success toast**.
+- On failure:
+  - Shows **error toast**.
+- If `copies` is updated to **0**:
+  - Automatically sets `available` status to **false**.
+
+---
+
+## Borrow Book Modal
+- Triggered by **Borrow** button.
+- Contains:
+  - A field to enter number of copies to borrow.
+  - A **date picker** for return date.
+- Validations:
+  - Cannot borrow more copies than available.
+- On success:
+  - Shows **success toast**.
+
+---
+
+## Borrow Summary Page
+- Displays all **borrowed books summary**.
+- Uses **aggregation** to show detailed insights.
+
+#### All the actions brings changes to ui instantly with the help of redux. 
+
+
+## Installation & Setup
+
+### Prerequisites
+
+- Node.js 
+- npm 
+
+### 1. Clone the Frontend Repository
+
+```bash
+git clone https://github.com/lutfurrahman20/library-management-client.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Go Inside The File 
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd library-management-client
 ```
+
+### 3. Install The Dependencies 
+
+```bash
+npm install 
+```
+### 3. Run The Project
+
+```bash
+npm run dev  
+```
+
+
